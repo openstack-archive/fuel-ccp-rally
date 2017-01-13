@@ -1,0 +1,19 @@
+FROM {{ image_spec("openstack-base") }}
+MAINTAINER {{ maintainer }}
+
+{{ copy_sources("openstack/rally", "/rally") }}
+{{ copy_sources("openstack/tempest", "/tempest") }}
+
+RUN useradd --user-group --create-home --home-dir /var/lib/rally rally \
+    && chmod 755 /var/lib/rally \
+    && /var/lib/microservices/venv/bin/pip install -r /tempest/requirements.txt --upgrade /rally \
+    && rm -fr /rally \
+    && mv /tempest /var/lib/rally/tempest
+
+COPY newton-skip-list.list /var/lib/rally/
+COPY check_status.py /var/lib/rally/
+
+RUN chown -R rally: /var/lib/rally \
+    && chmod 755 /var/lib/rally/check_status.py
+
+USER rally

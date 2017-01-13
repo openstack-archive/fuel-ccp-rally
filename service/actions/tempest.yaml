@@ -1,0 +1,12 @@
+actions:
+  - name: tempest
+    image: rally-tempest
+    dependencies:
+      - keystone
+    command: /var/lib/rally/run-tempest.sh
+    files:
+      - path: /var/lib/rally/tempest.conf
+        content: tempest.conf.j2
+      - path: /var/lib/rally/run-tempest.sh
+        content: run-tempest.sh.j2
+        perm: "0700"

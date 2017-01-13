@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -ex
+
+# OS credentials
+export OS_AUTH_URL={{ address("keystone", keystone.admin_port, with_scheme=True) }}
+export OS_IDENTITY_API_VERSION=3
+export OS_PASSWORD={{ openstack.user_password }}
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_PROJECT_NAME={{ openstack.project_name }}
+export OS_USERNAME={{ openstack.user_name }}
+export OS_USER_DOMAIN_NAME=default
+
+function prepare_tempest_conf {
+    local public_network_id="$(openstack network show {{ neutron.bootstrap.external.net_name }} -f value -c id)"
+    cat <<EOF >> /var/lib/rally/tempest.conf
+
+[network]
+floating_network_name = {{ neutron.bootstrap.external.net_name }}
+public_network_id = $public_network_id
+EOF
+}
+
+rally-manage db create
+rally deployment create --fromenv --name=tempest
+rally verify install --system-wide --source /var/lib/rally/tempest
+
+prepare_tempest_conf
+
+rally verify genconfig --override --add-options /var/lib/rally/tempest.conf
+rally verify showconfig
+
+rally verify start --system-wide --skip-list /var/lib/rally/newton-skip-list.list
+
+rally verify results | /var/lib/rally/check_status.py
