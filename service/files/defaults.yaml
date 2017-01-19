@@ -1,7 +1,7 @@
 configs:
   rally:
-    log_server_port:
-      cont: 8080
+    openstack_release: mitaka
+
 sources:
   openstack/rally:
     git_url: https://git.openstack.org/openstack/rally.git

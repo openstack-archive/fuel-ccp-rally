@@ -30,6 +30,8 @@ prepare_tempest_conf
 rally verify genconfig --override --add-options /var/lib/rally/tempest.conf
 rally verify showconfig
 
-rally verify start --system-wide --skip-list /var/lib/rally/newton-skip-list.list
+os_release="{{ rally.openstack_release }}"
+
+rally verify start --system-wide --skip-list "/var/lib/rally/${os_release}-skip-list.list"
 
 rally verify results | /var/lib/rally/check_status.py

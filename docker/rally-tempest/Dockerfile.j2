@@ -10,6 +10,7 @@ RUN useradd --user-group --create-home --home-dir /var/lib/rally rally \
     && rm -fr /rally \
     && mv /tempest /var/lib/rally/tempest
 
+COPY mitaka-skip-list.list /var/lib/rally/
 COPY newton-skip-list.list /var/lib/rally/
 COPY check_status.py /var/lib/rally/
 
