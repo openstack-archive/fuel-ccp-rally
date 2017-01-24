@@ -6,7 +6,7 @@ MAINTAINER {{ maintainer }}
 
 RUN useradd --user-group --create-home --home-dir /var/lib/rally rally \
     && chmod 755 /var/lib/rally \
-    && /var/lib/microservices/venv/bin/pip install -r /tempest/requirements.txt --upgrade /rally \
+    && /var/lib/microservices/venv/bin/pip install /rally \
     && rm -fr /rally \
     && mv /tempest /var/lib/rally/tempest
 

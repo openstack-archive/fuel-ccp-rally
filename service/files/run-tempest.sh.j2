@@ -23,7 +23,7 @@ EOF
 
 rally-manage db create
 rally deployment create --fromenv --name=tempest
-rally verify install --system-wide --source /var/lib/rally/tempest
+rally verify install --source /var/lib/rally/tempest
 
 prepare_tempest_conf
 
@@ -32,6 +32,6 @@ rally verify showconfig
 
 os_release="{{ rally.openstack_release }}"
 
-rally verify start --system-wide --skip-list "/var/lib/rally/${os_release}-skip-list.list"
+rally verify start --skip-list "/var/lib/rally/${os_release}-skip-list.list"
 
 rally verify results | /var/lib/rally/check_status.py
