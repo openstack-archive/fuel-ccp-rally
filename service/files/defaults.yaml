@@ -8,4 +8,4 @@ sources:
     git_ref: 0.7.0
   openstack/tempest:
     git_url: https://git.openstack.org/openstack/tempest.git
-    git_ref: 13.0.0
+    git_ref: 2e7d0f026ec81540deef5fe2e4ddf84f484aaa37
