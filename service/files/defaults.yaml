@@ -1,6 +1,22 @@
 configs:
   rally:
-    openstack_release: mitaka
+    tempest:
+      openstack_release: mitaka
+      compute:
+        min_compute_nodes: 2
+      compute_feature:
+        block_migration_for_live_migration: false
+        live_migration: false
+        nova_cert: false
+        personality: true
+      network_feature:
+        ipv6: false
+        ipv6_subnet_attributes: false
+      object_storage_feature:
+        discoverability: false
+      volume:
+        storage_protocol: ceph
+
 
 sources:
   openstack/rally:
