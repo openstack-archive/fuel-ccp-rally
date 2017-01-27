@@ -2,6 +2,22 @@
 
 set -ex
 
+function publish_artifacts {
+    local path="{{ rally.tempest.static.path }}"
+    mkdir -p "${path}"
+
+    cp /var/lib/rally/tempest.log "${path}/tempest.log"
+    rally verify results --output-file "${path}/result.json"
+    rally verify results --html --output-file "${path}/result.html"
+    # TODO: add junit report
+
+    local private_key_path="private.key"
+    echo "{{ rally.tempest.static.private_key }}" > "${private_key_path}"
+    chmod 600 "${private_key_path}"
+    scp -i "${private_key_path}" "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.port }}:
+    echo "Artifacts are located to {{ rally.tempest.static.site }}/${path}"
+}
+
 # OS credentials
 export OS_AUTH_URL={{ address("keystone", keystone.admin_port, with_scheme=True) }}
 export OS_IDENTITY_API_VERSION=3
@@ -33,5 +49,9 @@ rally verify showconfig
 os_release="{{ rally.tempest.openstack_release }}"
 
 rally verify start --skip-list "/var/lib/rally/${os_release}-skip-list.list"
+
+{% if rally.tempest.static.publish %}
+publish_artifacts
+{% endif %}
 
 rally verify results | /var/lib/rally/check_status.py
