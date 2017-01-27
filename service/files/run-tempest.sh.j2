@@ -3,7 +3,7 @@
 set -ex
 
 function publish_artifacts {
-    local path="{{ rally.tempest.static.path }}"
+    local path="/var/lib/rally/{{ rally.tempest.static.path }}"
     mkdir -p "${path}"
 
     cp /var/lib/rally/tempest.log "${path}/tempest.log"
