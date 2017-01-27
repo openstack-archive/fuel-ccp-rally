@@ -30,7 +30,7 @@ prepare_tempest_conf
 rally verify genconfig --override --add-options /var/lib/rally/tempest.conf
 rally verify showconfig
 
-os_release="{{ rally.openstack_release }}"
+os_release="{{ rally.tempest.openstack_release }}"
 
 rally verify start --skip-list "/var/lib/rally/${os_release}-skip-list.list"
 
