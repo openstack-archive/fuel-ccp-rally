@@ -13,7 +13,7 @@ function publish_artifacts {
     # TODO: add junit report
 
     local private_key_path="private.key"
-    echo "{{ rally.tempest.static.private_key }}" > "${private_key_path}"
+    printf "{{ rally.tempest.static.private_key }}" > "${private_key_path}"
     chmod 600 "${private_key_path}"
     scp -i "${private_key_path}" "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.port }}:
     echo "Artifacts are located to {{ rally.tempest.static.site }}/${path}"
