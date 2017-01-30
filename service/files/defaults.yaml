@@ -29,7 +29,7 @@ configs:
 sources:
   openstack/rally:
     git_url: https://git.openstack.org/openstack/rally.git
-    git_ref: 0.7.0
+    git_ref: 0.8.1
   openstack/tempest:
     git_url: https://git.openstack.org/openstack/tempest.git
     git_ref: 2e7d0f026ec81540deef5fe2e4ddf84f484aaa37
