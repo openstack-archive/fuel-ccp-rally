@@ -6,7 +6,8 @@ function publish_artifacts {
     local path="/var/lib/rally/{{ rally.tempest.static.path }}"
     mkdir -p "${path}"
 
-    cp /var/lib/rally/tempest.log "${path}/tempest.log"
+    # TODO: log_file option broken and fixed in rally 0.8.0
+    #cp /var/lib/rally/tempest.log "${path}/tempest.log"
     rally verify results --output-file "${path}/result.json"
     rally verify results --html --output-file "${path}/result.html"
     # TODO: add junit report
