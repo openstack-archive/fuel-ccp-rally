@@ -10,3 +10,6 @@ actions:
       - path: /var/lib/rally/run-tempest.sh
         content: run-tempest.sh.j2
         perm: "0700"
+      - path: /var/lib/rally/static.pem
+        content: static.pem.j2
+        perm: "0600"

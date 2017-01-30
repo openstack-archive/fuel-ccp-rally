@@ -12,10 +12,7 @@ function publish_artifacts {
     rally verify results --html --output-file "${path}/result.html"
     # TODO: add junit report
 
-    local private_key_path="private.key"
-    printf "{{ rally.tempest.static.private_key }}" > "${private_key_path}"
-    chmod 600 "${private_key_path}"
-    scp -i "${private_key_path}" "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.port }}:
+    scp -i /var/lib/rally/static.pem "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.port }}:
     echo "Artifacts are located to {{ rally.tempest.static.site }}/${path}"
 }
 
