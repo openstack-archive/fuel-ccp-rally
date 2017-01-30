@@ -7,12 +7,14 @@ import sys
 
 
 def main():
-    data = json.loads(sys.stdin.read())
-    if data["failures"] == 0:
-        print("Tests succeeded")
+    with open(sys.argv[1]) as f:
+        data = json.load(f)
+    failures = data["verifications"].values()[0]["failures"]
+    if failures == 0:
+        print("Tests succeeded!")
         sys.exit(0)
     else:
-        print("Tests failed: %d" % data["failures"])
+        print("Tests failed: %d." % failures)
         sys.exit(1)
 
 

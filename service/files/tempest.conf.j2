@@ -17,6 +17,9 @@ live_migration = {{ compute_feature.live_migration }}
 nova_cert = {{ compute_feature.nova_cert }}
 personality = {{ compute_feature.personality }}
 
+[network]
+floating_network_name = {{ neutron.bootstrap.external.net_name }}
+
 {% set network_feature = rally.tempest.network_feature %}
 [network-feature-enabled]
 ipv6 = {{ network_feature.ipv6 }}
