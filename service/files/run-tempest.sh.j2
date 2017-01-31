@@ -12,8 +12,8 @@ function publish_artifacts {
     rally verify results --html --output-file "${path}/result.html"
     # TODO: add junit report
 
-    scp -i /var/lib/rally/static.pem "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.port }}:
-    echo "Artifacts are located to {{ rally.tempest.static.site }}/${path}"
+    scp -o StrictHostKeyChecking=no -r -i /var/lib/rally/static.pem -p {{ rally.tempest.static.port }} "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.server_path }}
+    echo "Artifacts are located to {{ rally.tempest.static.site }}/{{ rally.tempest.static.path }}"
 }
 
 # OS credentials
@@ -46,7 +46,7 @@ rally verify showconfig
 
 os_release="{{ rally.tempest.openstack_release }}"
 
-rally verify start --skip-list "/var/lib/rally/${os_release}-skip-list.list"
+rally verify start --set smoke --skip-list "/var/lib/rally/${os_release}-skip-list.list"
 
 {% if rally.tempest.static.publish %}
 publish_artifacts
