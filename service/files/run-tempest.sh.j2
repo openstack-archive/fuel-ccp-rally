@@ -12,7 +12,7 @@ function publish_artifacts {
     rally verify results --html --output-file "${path}/result.html"
     # TODO: add junit report
 
-    scp -o StrictHostKeyChecking=no -r -i /var/lib/rally/static.pem -p {{ rally.tempest.static.port }} "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.server_path }}
+    scp -o StrictHostKeyChecking=no -r -i /var/lib/rally/static.pem -p{{ rally.tempest.static.port }} "${path}" {{ rally.tempest.static.username }}@{{ rally.tempest.static.host }}:{{ rally.tempest.static.server_path }}
     echo "Artifacts are located to {{ rally.tempest.static.site }}/{{ rally.tempest.static.path }}"
 }
 
