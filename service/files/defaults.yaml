@@ -20,6 +20,7 @@ configs:
         port: 22
         private_key: ""
         publish: false
+        server_path: /var/www/html/
         site: http://localhost
         username: jenkins
       volume:
