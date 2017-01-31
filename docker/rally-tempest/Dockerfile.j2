@@ -4,7 +4,10 @@ MAINTAINER {{ maintainer }}
 {{ copy_sources("openstack/rally", "/rally") }}
 {{ copy_sources("openstack/tempest", "/tempest") }}
 
-RUN useradd --user-group --create-home --home-dir /var/lib/rally rally \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends openssh-client \
+    && apt-get clean \
+    && useradd --user-group --create-home --home-dir /var/lib/rally rally \
     && chmod 755 /var/lib/rally \
     && /var/lib/microservices/venv/bin/pip install /rally \
     && rm -fr /rally \
