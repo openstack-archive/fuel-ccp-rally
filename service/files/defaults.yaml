@@ -27,6 +27,8 @@ configs:
         server_path: /var/www/html
         site: http://localhost
         username: jenkins
+      tests_set: full
+      tests_regex: null
       volume:
         storage_protocol: ceph
       volume_feature:
