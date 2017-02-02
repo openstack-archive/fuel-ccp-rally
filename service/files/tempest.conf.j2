@@ -14,8 +14,19 @@ min_compute_nodes = {{ rally.tempest.compute.min_compute_nodes }}
 [compute-feature-enabled]
 block_migration_for_live_migration = {{ compute_feature.block_migration_for_live_migration }}
 live_migration = {{ compute_feature.live_migration }}
-nova_cert = {{ compute_feature.nova_cert }}
+allow_port_security_disabled = {{ compute_feature.allow_port_security_disabled }}
+attach_encrypted_volume = {{ compute_feature.attach_encrypted_volume }}
 personality = {{ compute_feature.personality }}
+
+[identity]
+{% if rally.tempest.openstack_release == "mitaka" %}
+admin_domain_scope = False
+{% else %}
+admin_domain_scope = True
+{% endif %}
+
+[identity-feature-enabled]
+reseller = {{ rally.tempest.identity_feature.reseller }}
 
 [network]
 floating_network_name = {{ neutron.bootstrap.external.net_name }}
@@ -26,7 +37,17 @@ ipv6 = {{ network_feature.ipv6 }}
 ipv6_subnet_attributes = {{ network_feature.ipv6_subnet_attributes }}
 
 [object-storage-feature-enabled]
+container_sync = {{ rally.tempest.object_storage_feature.container_sync }}
 discoverability = {{ rally.tempest.object_storage_feature.discoverability }}
 
 [volume]
 storage_protocol = {{ rally.tempest.volume.storage_protocol }}
+
+[volume-feature-enabled]
+{% if rally.tempest.openstack_release == "mitaka" %}
+api_v3 = False
+{% else %}
+api_v3 = True
+max_microversion = latest
+{% endif %}
+volume_services = {{ rally.tempest.volume_feature.volume_services }}
