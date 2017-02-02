@@ -3,7 +3,6 @@ tempest.api.object_storage.test_account_bulk.BulkTest.test_bulk_delete_by_POST[i
 tempest.api.object_storage.test_account_bulk.BulkTest.test_extract_archive[id-a407de51-1983-47cc-9f14-47c2b059413c]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_account_quotas.AccountQuotasTest.test_admin_modify_quota[id-63f51f9f-5f1d-4fc6-b5be-d454d70949d6,smoke]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_account_quotas.AccountQuotasTest.test_upload_valid_object[id-a22ef352-a342-4587-8f47-3bbdb5b039c4,smoke]: The test is not compatible with RadosGW
-tempest.api.object_storage.test_account_quotas_negative.AccountQuotasNegativeTest.test_upload_large_object[id-cf9e21f5-3aa4-41b1-9462-28ac550d8d3f,negative]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_account_quotas_negative.AccountQuotasNegativeTest.test_user_modify_quota[id-d1dc5076-555e-4e6d-9697-28f1fe976324,negative]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_account_services.AccountTest.test_list_account_metadata[id-4894c312-6056-4587-8d6f-86ffbf861f80,smoke]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_account_services.AccountTest.test_list_containers[id-3499406a-ae53-4f8c-b43a-133d4dc6fe3f,smoke]: The test is not compatible with RadosGW
@@ -102,4 +101,3 @@ tempest.api.orchestration.stacks.test_swift_resources.SwiftResourcesTestJSON.tes
 tempest.api.orchestration.stacks.test_swift_resources.SwiftResourcesTestJSON.test_created_containers[id-bd438b18-5494-4d5a-9ce6-d2a942ec5060,object_storage]: The test is not compatible with RadosGW
 tempest.api.orchestration.stacks.test_swift_resources.SwiftResourcesTestJSON.test_created_resources[id-1a6fe69e-4be4-4990-9a7a-84b6f18019cb]: The test is not compatible with RadosGW
 tempest.api.orchestration.stacks.test_swift_resources.SwiftResourcesTestJSON.test_metadata[id-fda06135-6777-4594-aefa-0f6107169698,object_storage]: The test is not compatible with RadosGW
-tempest.scenario.test_object_storage_telemetry_middleware.TestObjectStorageTelemetry.test_swift_middleware_notifies[id-6d6b88e5-3e38-41bc-b34a-79f713a6cb84,object_storage,telemetry]: The test is not compatible with RadosGW

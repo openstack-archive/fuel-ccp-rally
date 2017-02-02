@@ -7,12 +7,16 @@ configs:
       compute_feature:
         block_migration_for_live_migration: false
         live_migration: false
-        nova_cert: false
         personality: true
+        allow_port_security_disabled: true
+        attach_encrypted_volume: true
+      identity_feature:
+        reseller: true
       network_feature:
-        ipv6: false
-        ipv6_subnet_attributes: false
+        ipv6: true
+        ipv6_subnet_attributes: true
       object_storage_feature:
+        container_sync: false
         discoverability: false
       static:
         host: localhost
@@ -25,6 +29,8 @@ configs:
         username: jenkins
       volume:
         storage_protocol: ceph
+      volume_feature:
+        volume_services: true
 
 
 sources:
@@ -33,4 +39,4 @@ sources:
     git_ref: 0.8.1
   openstack/tempest:
     git_url: https://git.openstack.org/openstack/tempest.git
-    git_ref: 2e7d0f026ec81540deef5fe2e4ddf84f484aaa37
+    git_ref: 14.0.0
