@@ -27,7 +27,13 @@ rally verify configure-verifier --extend /var/lib/rally/tempest.conf --show
 
 os_release="{{ rally.tempest.openstack_release }}"
 
-rally verify start --skip-list "/var/lib/rally/${os_release}-skip-list.list" --detailed
+{% if rally.tempest.tests_regex %}
+pattern="{{ rally.tempest.tests_regex }}"
+{% else %}
+pattern="set={{ rally.tempest.tests_set }}"
+{% endif %}
+
+rally verify start --pattern "${pattern}" --skip-list "/var/lib/rally/${os_release}-skip-list.list" --detailed
 
 path="/var/lib/rally/{{ rally.tempest.static.path }}"
 mkdir -p "${path}"
