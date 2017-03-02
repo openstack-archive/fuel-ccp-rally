@@ -9,6 +9,7 @@ RUN apt-get update \
     && apt-get clean \
     && useradd --user-group --create-home --home-dir /var/lib/rally rally \
     && chmod 755 /var/lib/rally \
+    && usermod -a -G microservices rally \
     && /var/lib/microservices/venv/bin/pip install /rally \
     && rm -fr /rally \
     && mv /tempest /var/lib/rally/tempest
