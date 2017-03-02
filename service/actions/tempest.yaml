@@ -3,7 +3,7 @@ actions:
     image: rally-tempest
     dependencies:
       - keystone
-    command: /var/lib/rally/run-tempest.sh
+    command: bash /var/lib/rally/run-tempest.sh
     files:
       - path: /var/lib/rally/tempest.conf
         content: tempest.conf.j2
@@ -13,3 +13,6 @@ actions:
       - path: /var/lib/rally/static.pem
         content: static.pem.j2
         perm: "0600"
+      - path: /opt/ccp/etc/tls/ca.pem
+        content: ca-cert.pem.j2
+        perm: "0400"

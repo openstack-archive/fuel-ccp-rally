@@ -19,6 +19,9 @@ export OS_PROJECT_DOMAIN_NAME=default
 export OS_PROJECT_NAME={{ openstack.project_name }}
 export OS_USERNAME={{ openstack.user_name }}
 export OS_USER_DOMAIN_NAME=default
+{% if keystone.tls.enabled %}
+export OS_CACERT="/opt/ccp/etc/tls/ca.pem"
+{% endif %}
 
 rally-manage db create
 rally deployment create --fromenv --name=to-be-verified-by-tempest
