@@ -16,6 +16,7 @@ RUN apt-get update \
 
 COPY mitaka-skip-list.list /var/lib/rally/
 COPY newton-skip-list.list /var/lib/rally/
+COPY ocata-skip-list.list /var/lib/rally/
 COPY check_status.py /var/lib/rally/
 
 RUN chown -R rally: /var/lib/rally \
