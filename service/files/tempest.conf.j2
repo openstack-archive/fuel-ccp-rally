@@ -7,6 +7,8 @@ min_microversion = 2.1
 max_microversion = 2.25
 {% elif rally.tempest.openstack_release == "newton" %}
 max_microversion = 2.38
+{% elif rally.tempest.openstack_release == "ocata" %}
+max_microversion = 2.42
 {% endif %}
 min_compute_nodes = {{ rally.tempest.compute.min_compute_nodes }}
 
