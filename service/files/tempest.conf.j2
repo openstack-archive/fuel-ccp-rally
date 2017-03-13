@@ -2,14 +2,7 @@
 log_file = /var/lib/rally/tempest.log
 
 [compute]
-min_microversion = 2.1
-{% if rally.tempest.openstack_release == "mitaka" %}
-max_microversion = 2.25
-{% elif rally.tempest.openstack_release == "newton" %}
-max_microversion = 2.38
-{% elif rally.tempest.openstack_release == "ocata" %}
-max_microversion = 2.42
-{% endif %}
+max_microversion = latest
 min_compute_nodes = {{ rally.tempest.compute.min_compute_nodes }}
 
 {% set compute_feature = rally.tempest.compute_feature %}
@@ -19,6 +12,14 @@ live_migration = {{ compute_feature.live_migration }}
 allow_port_security_disabled = {{ compute_feature.allow_port_security_disabled }}
 attach_encrypted_volume = {{ compute_feature.attach_encrypted_volume }}
 personality = {{ compute_feature.personality }}
+
+[auth]
+use_dynamic_credentials = True
+tempest_roles = {{ openstack.role_name }}
+admin_domain_name = Default
+admin_project_name = {{ openstack.project_name }}
+admin_password = {{ openstack.user_password }}
+admin_username = {{ openstack.user_name }}
 
 [identity]
 {% if rally.tempest.openstack_release == "mitaka" %}
