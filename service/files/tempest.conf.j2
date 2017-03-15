@@ -15,7 +15,7 @@ personality = {{ compute_feature.personality }}
 
 [auth]
 use_dynamic_credentials = True
-tempest_roles = {{ openstack.role_name }}
+tempest_roles = _member_
 admin_domain_name = Default
 admin_project_name = {{ openstack.project_name }}
 admin_password = {{ openstack.user_password }}
