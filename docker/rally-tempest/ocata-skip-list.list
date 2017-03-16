@@ -59,7 +59,7 @@ tempest.api.object_storage.test_object_expiry.ObjectExpiryTest.test_get_object_a
 tempest.api.object_storage.test_object_expiry.ObjectExpiryTest.test_get_object_at_expiry_time[id-e592f18d-679c-48fe-9e36-4be5f47102c5]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_object_formpost.ObjectFormPostTest.test_post_object_using_form[id-80fac02b-6e54-4f7b-be0d-a965b5cbef76]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_object_formpost_negative.ObjectFormPostNegativeTest.test_post_object_using_form_expired[id-d3fb3c4d-e627-48ce-9379-a1631f21336d,negative]: The test is not compatible with RadosGW
-tempest.api.object_storage.test_object_formpost_negative.ObjectFormPostNegativeTest.test_post_object_using_form_invalid_signature[id-b277257f-113c-4499-b8d1-5fead79f7360]: The test is not compatible with RadosGW
+tempest.api.object_storage.test_object_formpost_negative.ObjectFormPostNegativeTest.test_post_object_using_form_invalid_signature[id-b277257f-113c-4499-b8d1-5fead79f7360,negative]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_object_services.ObjectTest.test_copy_object_2d_way[id-06f90388-2d0e-40aa-934c-e9a8833e958a]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_object_services.ObjectTest.test_copy_object_across_containers[id-aa467252-44f3-472a-b5ae-5b57c3c9c147]: The test is not compatible with RadosGW
 tempest.api.object_storage.test_object_services.ObjectTest.test_copy_object_in_same_container[id-1a9ab572-1b66-4981-8c21-416e2a5e6011]: The test is not compatible with RadosGW
